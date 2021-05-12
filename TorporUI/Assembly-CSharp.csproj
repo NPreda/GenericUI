@@ -40,6 +40,7 @@
      <Compile Include="Assets\Scripts\UI\UIButton.cs" />
      <Compile Include="Assets\Scripts\UI\Controllers\NotesController.cs" />
      <Compile Include="Assets\Scripts\Factories\ButtonFactory.cs" />
+     <Compile Include="Assets\Scripts\UI\Structs\TopButtonStruct.cs" />
      <Compile Include="Assets\Scripts\UI\Registry.cs" />
      <Compile Include="Assets\Scripts\UI\Controllers\CodexController.cs" />
      <Compile Include="Assets\Scripts\UI\Structs\CodexEntry.cs" />
@@ -51,12 +52,11 @@
      <Compile Include="Assets\Scripts\UI\Language.cs" />
      <Compile Include="Assets\Scripts\UI\CustomUI.cs" />
      <Compile Include="Assets\Scripts\UI\Structs\CodexCategoryList.cs" />
+     <Compile Include="Assets\Scripts\UI\UIButtonGroup.cs" />
      <Compile Include="Assets\Scripts\UI\Controllers\EntryDisplay.cs" />
      <Compile Include="Assets\Scripts\Tools\UiMouseInputProvider.cs" />
      <Compile Include="Assets\Scripts\UI\ButtonSkinData.cs" />
      <Compile Include="Assets\Scripts\UI\Structs\CodexCategory.cs" />
-     <Compile Include="Assets\Scripts\UI\Structs\TopButtonStruct.cs" />
-     <Compile Include="Assets\Scripts\UI\UIButtonGroup.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

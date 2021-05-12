@@ -22,7 +22,7 @@ public class CodexController : MonoBehaviour
     private UIButtonGroup subCategoryButtons = new UIButtonGroup();
     private UIButtonGroup entryButtons = new UIButtonGroup();
 
-    public void Awake()
+    public void Start()
     {
         settings = Registry.Instance.settings;
 
