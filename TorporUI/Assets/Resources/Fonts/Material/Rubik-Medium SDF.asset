@@ -59,9 +59,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: Rubik-Medium SDF
   m_EditorClassIdentifier: 
-  hashCode: 0
+  hashCode: -1034929210
   material: {fileID: 5939739515310828526}
-  materialHashCode: 0
+  materialHashCode: -573790682
   m_Version: 1.1.0
   m_SourceFontFileGUID: 7a7edcf460ffa4542b7eb0ae0d114266
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 7a7edcf460ffa4542b7eb0ae0d114266, type: 3}
@@ -75,8 +75,8 @@ MonoBehaviour:
     m_Scale: 1
     m_LineHeight: 80.58
     m_AscentLine: 63.58
-    m_CapLine: 0
-    m_MeanLine: 0
+    m_CapLine: 47.59375
+    m_MeanLine: 35.359375
     m_Baseline: 0
     m_DescentLine: -17
     m_SuperscriptOffset: 63.58
@@ -85,7 +85,7 @@ MonoBehaviour:
     m_SubscriptSize: 0.5
     m_UnderlineOffset: -5.1
     m_UnderlineThickness: 3.4
-    m_StrikethroughOffset: 0
+    m_StrikethroughOffset: 19.0375
     m_StrikethroughThickness: 3.4
     m_TabWidth: 0
   m_GlyphTable:
@@ -2685,9 +2685,9 @@ Material:
     - _OutlineWidth: 0
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
-    - _ScaleRatioA: 1
-    - _ScaleRatioB: 1
-    - _ScaleRatioC: 1
+    - _ScaleRatioA: 0.8333333
+    - _ScaleRatioB: 0.6770833
+    - _ScaleRatioC: 0.6770833
     - _ScaleX: 1
     - _ScaleY: 1
     - _ShaderFlags: 0

@@ -115,9 +115,9 @@ Material:
     - _OutlineWidth: 0
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
-    - _ScaleRatioA: 1
-    - _ScaleRatioB: 1
-    - _ScaleRatioC: 1
+    - _ScaleRatioA: 0.8333333
+    - _ScaleRatioB: 0.6770833
+    - _ScaleRatioC: 0.6770833
     - _ScaleX: 1
     - _ScaleY: 1
     - _ShaderFlags: 0
@@ -162,9 +162,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: Rubik-Regular SDF
   m_EditorClassIdentifier: 
-  hashCode: 0
+  hashCode: 73262657
   material: {fileID: -6753115961919431559}
-  materialHashCode: 0
+  materialHashCode: 174332865
   m_Version: 1.1.0
   m_SourceFontFileGUID: 8c77b21d502baba4bbb8197b9a717873
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 8c77b21d502baba4bbb8197b9a717873, type: 3}
@@ -178,8 +178,8 @@ MonoBehaviour:
     m_Scale: 1
     m_LineHeight: 85.32
     m_AscentLine: 67.32
-    m_CapLine: 0
-    m_MeanLine: 0
+    m_CapLine: 50.40625
+    m_MeanLine: 37.4375
     m_Baseline: 0
     m_DescentLine: -18
     m_SuperscriptOffset: 67.32
@@ -188,7 +188,7 @@ MonoBehaviour:
     m_SubscriptSize: 0.5
     m_UnderlineOffset: -5.3999996
     m_UnderlineThickness: 3.6
-    m_StrikethroughOffset: 0
+    m_StrikethroughOffset: 20.1625
     m_StrikethroughThickness: 3.6
     m_TabWidth: 0
   m_GlyphTable:

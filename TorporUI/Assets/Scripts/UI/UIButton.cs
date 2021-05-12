@@ -56,6 +56,7 @@ public class UIButton : CustomUI
 
 
         background.sprite = _background;
+        if(background.sprite == null) background.color =new Color (0,0,0,0);    //turn off colour and alpha if no image
         if(content != null)
         {
             content.font = _font;
