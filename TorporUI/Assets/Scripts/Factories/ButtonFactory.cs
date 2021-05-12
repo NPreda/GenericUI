@@ -13,4 +13,15 @@ public class ButtonFactory : Factory
 
         return buttonScript;
     }
+
+
+    public UIButton GetNewInstance(GameObject parent, string name, string id, string path)
+    {
+        this.prefab = Resources.Load(path) as GameObject;
+        GameObject categoryButton = GetNewInstance(parent);
+        var buttonScript = categoryButton.GetComponent<UIButton>();
+        buttonScript.Populate(name, id);
+
+        return buttonScript;
+    }
 }

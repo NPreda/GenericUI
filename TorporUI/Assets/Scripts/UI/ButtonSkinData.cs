@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using TMPro;
 
-[CreateAssetMenu(menuName = "Button Skin Data")]
+[CreateAssetMenu(menuName = "Custom UI/Button Skin Data")]
 public class ButtonSkinData :  ScriptableObject
 {
     [Header("Button Skin")]

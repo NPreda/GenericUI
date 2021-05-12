@@ -4,38 +4,39 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public enum Language{
-    en = 0,
-}
-
 public class CodexController : MonoBehaviour
 {
-
-    [SerializeField] Language languageSelection;
-
     [SerializeField] GameObject categoryPanel;
     [SerializeField] GameObject subCategoryPanel;
     [SerializeField] GameObject entryLeafPanel;
     [SerializeField] EntryDisplay entryDisplay;
+
+    private SettingsDB settings;
 
     private List<CodexEntry> codexEntries = new List<CodexEntry>();
 
     private RoundButtonFactory roundButtonFactory = new RoundButtonFactory(); 
     private ButtonFactory buttonFactory = new ButtonFactory();
 
-    private List<UIRoundButton> categoryButtons = new List<UIRoundButton>();
-    private List<UIButton> subCategoryButtons = new List<UIButton>();
-    private List<UIButton> entryButtons = new List<UIButton>();
+    private UIButtonGroup categoryButtons = new UIButtonGroup();
+    private UIButtonGroup subCategoryButtons = new UIButtonGroup();
+    private UIButtonGroup entryButtons = new UIButtonGroup();
 
     public void Awake()
     {
+        settings = Registry.Instance.settings;
+
+        categoryButtons.OnButtonPressed += OnCategorySelected;
+        subCategoryButtons.OnButtonPressed += OnSubcategorySelected;
+        entryButtons.OnButtonPressed += OnEntrySelected;
+
         GetAllEntries();
         SpawnCategories();
     }
 
     private void GetAllEntries()
-    {       
-        var languagePrefix = languageSelection.ToString();
+    {   
+        var languagePrefix = settings.language.ToString();
         List<TextAsset> entryAssets = Resources.LoadAll("Data/Localization/" + languagePrefix + "/Entries", typeof(TextAsset)).Cast<TextAsset>().ToList();
         foreach(var entry in entryAssets)
         {
@@ -46,14 +47,13 @@ public class CodexController : MonoBehaviour
 
     private void SpawnEntryButtons(string tag)
     {
-        CleanButtons(entryButtons);
+        entryButtons.ClearButtons();
         foreach(var entry in codexEntries)
         {
             if(entry.tag == tag)
             {
                 UIButton button = buttonFactory.GetNewInstance(entryLeafPanel, entry.title, "Prefabs/UI/LeafButton");
                 entryButtons.Add(button);    
-                button.OnLeftClickEvent += OnEntrySelected;
             }        
         }
     }
@@ -61,24 +61,13 @@ public class CodexController : MonoBehaviour
     //dynamically spawn the subcategory buttons according to selected category and language
     private void SpawnSubCategories(string category)
     {
-        var languagePrefix = languageSelection.ToString();
+        var languagePrefix = settings.language.ToString();
         TextAsset loadedFile = Resources.Load<TextAsset>("Data/Localization/" + languagePrefix +"/Categories/" + category);
         SubcategoryList subcategoryList = JsonUtility.FromJson<SubcategoryList>(loadedFile.text);
         foreach(string subcategory in subcategoryList.subcategories)
         {
             UIButton button = buttonFactory.GetNewInstance(subCategoryPanel, subcategory, "Prefabs/UI/IndexButton");
-            button.OnLeftClickEvent += OnSubcategorySelected;
             subCategoryButtons.Add(button);
-        }
-    }
-
-    //generic button destroyer
-    private void CleanButtons(List<UIButton> buttonList)
-    {
-        for(int i = buttonList.Count - 1; i >= 0; i--)
-        {
-            buttonList[i].DestroyHost();
-            buttonList.RemoveAt(i);
         }
     }
 
@@ -98,16 +87,9 @@ public class CodexController : MonoBehaviour
     private void OnCategorySelected(UIButton buttonScript)
     {
         //clean up existing buttons and displayed entry
-        CleanButtons(subCategoryButtons);
-        CleanButtons(entryButtons);
+        subCategoryButtons.ClearButtons();
+        entryButtons.ClearButtons();
         entryDisplay.Clear();   
-
-        //highlight selection
-        foreach(var button in categoryButtons)
-        {
-            if(button != buttonScript) button.Deselect();
-            else button.Select();
-        }
 
         //repopulate the space
         SpawnSubCategories(buttonScript.gameObject.name);
@@ -115,24 +97,11 @@ public class CodexController : MonoBehaviour
 
     private void OnSubcategorySelected(UIButton buttonScript)
     {
-        foreach(var button in subCategoryButtons)
-        {
-            if(button != buttonScript) button.Deselect();
-            else button.Select();
-        }
-
         SpawnEntryButtons(buttonScript.gameObject.name);
     }
 
     private void OnEntrySelected(UIButton buttonScript)
     {
-        //deactivate other buttons
-        foreach(var button in entryButtons)
-        {
-            if(button != buttonScript) button.Deselect();
-            else button.Select();
-        }
-
         //display entry
         CodexEntry item = codexEntries.Find(x=> x.title == buttonScript.gameObject.name);
         entryDisplay.Populate(item);

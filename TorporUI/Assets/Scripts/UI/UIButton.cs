@@ -12,12 +12,14 @@ public class UIButton : CustomUI
 {
 
     //----------------------------------------------------------------------
-    #region UnityElements
+    #region Properties
 
     [SerializeField] private TMP_Text content;
     private Image background;
     private IMouseInput mInput;
     public event Action<UIButton> OnLeftClickEvent;        //event sent when an item is left-clicked
+
+    public string id = "";  //used to as a localization independent identifier
 
     #endregion
     //----------------------------------------------------------------------
@@ -40,6 +42,13 @@ public class UIButton : CustomUI
     public void Populate(string objectName)
     {
         this.gameObject.name = objectName;
+        this.content.text = objectName;
+    }
+
+    public void Populate(string objectName, string id)
+    {
+        this.gameObject.name = id;
+        this.id = id;
         this.content.text = objectName;
     }
 
