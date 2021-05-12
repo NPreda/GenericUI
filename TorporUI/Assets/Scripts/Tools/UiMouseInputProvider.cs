@@ -35,6 +35,8 @@ namespace Tools.UI
 
         Vector2 MousePosition { get; }
         DragDirection DragDirection { get; }
+
+        void setActive(bool value);
     }
 
     public enum DragDirection
@@ -149,6 +151,15 @@ namespace Tools.UI
 
         #endregion
 
+        //----------------------------------------------------------------------------------------------------------
+        #region ScriptControl
+
+        public void setActive(bool value)
+        {
+            this.enabled = value;
+        }
+
+        #endregion
         //----------------------------------------------------------------------------------------------------------
     }
 }

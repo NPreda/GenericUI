@@ -1,8 +1,8 @@
 {
     "subcategories" : [
-        "Countries",
-        "Cities",
-        "Regions",
-        "Landmarks"        
+        "countries",
+        "cities",
+        "regions",
+        "landmarks"        
     ]
 }

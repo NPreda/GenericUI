@@ -29,6 +29,11 @@ namespace Custom.UI
         {
             _isDirty = true;
         }
+
+        public virtual void DestroyHost()
+        {
+            Destroy(this.gameObject);
+        }
     }
 }
 

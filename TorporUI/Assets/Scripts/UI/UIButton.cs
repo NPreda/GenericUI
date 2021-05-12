@@ -37,6 +37,12 @@ public class UIButton : CustomUI
         base.Awake();
     }
 
+    public void Populate(string objectName)
+    {
+        this.gameObject.name = objectName;
+        this.content.text = objectName;
+    }
+
     protected override void OnSkinUI ()
     {
         
@@ -68,13 +74,13 @@ public class UIButton : CustomUI
     }
 
     public void Select(){
-        Unsubscribe();
+        mInput.setActive(false);
         _isSelected = true;
         _isDirty = true;
     }
 
     public void Deselect(){
-        Subscribe();
+        mInput.setActive(true);
         _isSelected = false;
         _isDirty = true;
     } 
