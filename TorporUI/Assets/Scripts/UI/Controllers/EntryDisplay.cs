@@ -20,4 +20,11 @@ public class EntryDisplay: MonoBehaviour
             this.icon.gameObject.SetActive(false);
         }
     }
+
+    public void Clear()
+    {
+        this.title.text = "";
+        this.content.text="";
+        this.icon.gameObject.SetActive(false);
+    }
 }

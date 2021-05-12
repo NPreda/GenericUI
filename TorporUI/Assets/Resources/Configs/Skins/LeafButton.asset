@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unselectBackground: {fileID: 0}
   unselectIcon: {fileID: 0}
-  unselectFont: {fileID: 11400000, guid: 57083fcd025b6a34193e6cb3640807e8, type: 2}
+  unselectFont: {fileID: 11400000, guid: 7c03e5b11f1bb9246aface05ce0ed3d4, type: 2}
   unselectColor: {r: 0.8666667, g: 0.7882353, b: 0.5529412, a: 1}
   selectBackground: {fileID: 0}
   selectIcon: {fileID: 0}
-  selectFont: {fileID: 11400000, guid: f436983cbcc49d54bbe1c606ef664567, type: 2}
+  selectFont: {fileID: 11400000, guid: 57083fcd025b6a34193e6cb3640807e8, type: 2}
   selectColor: {r: 0.8666667, g: 0.7882353, b: 0.5529412, a: 1}

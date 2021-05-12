@@ -20,7 +20,7 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
-  isReadable: 0
+  isReadable: 1
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -51,7 +51,7 @@ TextureImporter:
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: -1
+  spriteTessellationDetail: 0
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -75,11 +75,40 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites: []
     outline: []
-    physicsShape: []
+    physicsShape:
+    - - {x: 74, y: 80}
+      - {x: 94, y: 56}
+      - {x: 108, y: 16}
+      - {x: 105, y: -25}
+      - {x: 83, y: -68}
+      - {x: 44, y: -99}
+      - {x: -1, y: -108}
+      - {x: -40, y: -101}
+      - {x: -80, y: -73}
+      - {x: -103, y: -36}
+      - {x: -108, y: 9}
+      - {x: -96, y: 52}
+      - {x: -73, y: 83}
+      - {x: -37, y: 106}
+      - {x: -7, y: 111}
+      - {x: 24, y: 108}
+      - {x: 48, y: 98}
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
     internalID: 0

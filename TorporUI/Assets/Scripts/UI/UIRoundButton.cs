@@ -14,6 +14,12 @@ public class UIRoundButton : UIButton
     //----------------------------------------------------------------------
     #region Logic
 
+    public override void Awake()
+    {
+        base.Awake();
+        icon.alphaHitTestMinimumThreshold = 0.9f;   //prevent clicks outside the circle from registering
+    }
+
     public void Populate(string objectName, Sprite activeIcon, Sprite unactiveIcon)
     {
         this.gameObject.name = objectName;

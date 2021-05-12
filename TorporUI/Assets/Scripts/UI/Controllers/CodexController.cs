@@ -53,7 +53,7 @@ public class CodexController : MonoBehaviour
             {
                 UIButton button = buttonFactory.GetNewInstance(entryLeafPanel, entry.title, "Prefabs/UI/LeafButton");
                 entryButtons.Add(button);    
-                button.OnLeftClickEvent += DisplayEntry;
+                button.OnLeftClickEvent += OnEntrySelected;
             }        
         }
     }
@@ -61,7 +61,6 @@ public class CodexController : MonoBehaviour
     //dynamically spawn the subcategory buttons according to selected category and language
     private void SpawnSubCategories(string category)
     {
-        CleanButtons(subCategoryButtons);
         var languagePrefix = languageSelection.ToString();
         TextAsset loadedFile = Resources.Load<TextAsset>("Data/Localization/" + languagePrefix +"/Categories/" + category);
         SubcategoryList subcategoryList = JsonUtility.FromJson<SubcategoryList>(loadedFile.text);
@@ -98,12 +97,19 @@ public class CodexController : MonoBehaviour
 
     private void OnCategorySelected(UIButton buttonScript)
     {
+        //clean up existing buttons and displayed entry
+        CleanButtons(subCategoryButtons);
+        CleanButtons(entryButtons);
+        entryDisplay.Clear();   
+
+        //highlight selection
         foreach(var button in categoryButtons)
         {
             if(button != buttonScript) button.Deselect();
             else button.Select();
         }
 
+        //repopulate the space
         SpawnSubCategories(buttonScript.gameObject.name);
     }
 
@@ -118,10 +124,19 @@ public class CodexController : MonoBehaviour
         SpawnEntryButtons(buttonScript.gameObject.name);
     }
 
-    private void DisplayEntry(UIButton buttonScript)
+    private void OnEntrySelected(UIButton buttonScript)
     {
+        //deactivate other buttons
+        foreach(var button in entryButtons)
+        {
+            if(button != buttonScript) button.Deselect();
+            else button.Select();
+        }
+
+        //display entry
         CodexEntry item = codexEntries.Find(x=> x.title == buttonScript.gameObject.name);
         entryDisplay.Populate(item);
     }
+
 
 }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 679537838705954061}
   - component: {fileID: 679537838705954063}
   - component: {fileID: 679537838705954062}
+  - component: {fileID: 5389911684206172317}
   m_Layer: 5
   m_Name: Icon
   m_TagString: Untagged
@@ -59,7 +60,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -75,6 +76,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &5389911684206172317
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 679537838705954060}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &679537839079870952
 GameObject:
   m_ObjectHideFlags: 0
@@ -88,6 +101,7 @@ GameObject:
   - component: {fileID: 679537839079870956}
   - component: {fileID: 679537839079870955}
   - component: {fileID: 2091463565814521520}
+  - component: {fileID: 6947640479189848108}
   m_Layer: 5
   m_Name: RoundButton
   m_TagString: Untagged
@@ -181,3 +195,15 @@ MonoBehaviour:
   _isDirty: 1
   content: {fileID: 0}
   icon: {fileID: 679537838705954062}
+--- !u!225 &6947640479189848108
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 679537839079870952}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
