@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
+using System;
 
 [RequireComponent(typeof(IMouseInput))]
 [RequireComponent(typeof(Image))]
@@ -13,17 +14,16 @@ public class UIButton : CustomUI
     //----------------------------------------------------------------------
     #region UnityElements
 
-    [SerializeField] private Image icon;
     [SerializeField] private TMP_Text content;
     private Image background;
     private IMouseInput mInput;
+    public event Action<UIButton> OnLeftClickEvent;        //event sent when an item is left-clicked
 
     #endregion
     //----------------------------------------------------------------------
     #region SkinVariables
 
-    private bool _isSelected;
-    private Sprite _icon;
+    protected bool _isSelected;
     private Sprite _background;
     private TMP_FontAsset _font; 
     private Color _color;  
@@ -45,12 +45,10 @@ public class UIButton : CustomUI
         {
             _background = skinData.selectBackground;
             _font = skinData.selectFont;
-            _icon = skinData.selectIcon;
             _color = skinData.selectColor;
         }else{
             _background = skinData.unselectBackground;
             _font = skinData.unselectFont;
-            _icon = skinData.unselectIcon;
             _color = skinData.unselectColor;
         }
 
@@ -62,16 +60,24 @@ public class UIButton : CustomUI
             content.font = _font;
             content.color = _color;
         } 
-
-        if(icon != null) icon.sprite = _icon;
-
     }
 
     void OnClick(PointerEventData eventData)
     {
-        _isSelected = !_isSelected;
+        OnLeftClickEvent(this);
+    }
+
+    public void Select(){
+        Unsubscribe();
+        _isSelected = true;
         _isDirty = true;
     }
+
+    public void Deselect(){
+        Subscribe();
+        _isSelected = false;
+        _isDirty = true;
+    } 
 
     void Subscribe()
     {

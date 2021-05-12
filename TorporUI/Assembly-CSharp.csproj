@@ -36,10 +36,17 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Tools\UiMouseInputProvider.cs" />
      <Compile Include="Assets\Scripts\UI\UIButton.cs" />
-     <Compile Include="Assets\Scripts\UI\ButtonSkinData.cs" />
      <Compile Include="Assets\Scripts\UI\CustomUI.cs" />
+     <Compile Include="Assets\Scripts\Tools\UiMouseInputProvider.cs" />
+     <Compile Include="Assets\Scripts\UI\ButtonSkinData.cs" />
+     <Compile Include="Assets\Scripts\Tools\Factory.cs" />
+     <Compile Include="Assets\Scripts\UI\Structs\CodexCategory.cs" />
+     <Compile Include="Assets\Scripts\UI\Controllers\CodexController.cs" />
+     <Compile Include="Assets\Scripts\UI\Structs\CodexCategoryList.cs" />
+     <Compile Include="Assets\Scripts\Factories\RoundButtonFactory.cs" />
+     <Compile Include="Assets\Scripts\UI\UIRoundButton.cs" />
+     <Compile Include="Assets\Scripts\UI\Structs\SubcategoryList.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
