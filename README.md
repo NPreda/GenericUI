@@ -6,6 +6,7 @@
  The screen will start at "Codex" by default. 
  
  >Instruction: Quickly switch between "Codex" and "Notes" by pressing the buttons on their left and then right side.
+ >
  >Watch for: unresponsiveness, lag, flickering or poorly fitting screens.
  
 
