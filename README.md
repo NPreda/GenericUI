@@ -1,4 +1,4 @@
-# TorporUI - Testing Instructions
+# GenericUI - Testing Instructions
 
 
 ### Top Buttons
