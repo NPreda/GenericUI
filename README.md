@@ -28,7 +28,7 @@
   
 ### Notes
 
-  When in Notes, it should automatically select "Act 1" for you.
+  When in Notes, it should automatically select "Act 1" for you. There should currently be a limit of 10 notes per Act, with older ones getting removed after this.
   
   
   >Instruction: Create 5 unique entries into each act. Close the application, then open it again. Go through each act again in Notes.
