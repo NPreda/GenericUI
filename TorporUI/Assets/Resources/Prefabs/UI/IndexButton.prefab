@@ -104,8 +104,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skinData: {fileID: 11400000, guid: d6e5ddb2303e8ad4a8780347a38345ba, type: 2}
   _isDirty: 1
-  icon: {fileID: 0}
   content: {fileID: 5825494537969939664}
+  id: 
 --- !u!1 &7358192590356809521
 GameObject:
   m_ObjectHideFlags: 0
@@ -138,11 +138,11 @@ RectTransform:
   m_Father: {fileID: 7973425013226952622}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 150, y: 50}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &6152877139332101178
 CanvasRenderer:
   m_ObjectHideFlags: 0
