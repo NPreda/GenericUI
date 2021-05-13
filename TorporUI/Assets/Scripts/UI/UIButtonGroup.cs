@@ -22,7 +22,7 @@ public class UIButtonGroup
         OnButtonSelected(selectedButton);
     }
 
-    public void RemoveButton(UIButton button)
+    public virtual void RemoveButton(UIButton button)
     {
         buttons.Remove(button);
         button.DestroyHost();

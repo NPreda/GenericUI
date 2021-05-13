@@ -19,6 +19,7 @@ public class TextLogControl : MonoBehaviour
     public void Start()
     {
         logItems.OnButtonPressed += OnItemSelected;
+        logItems.ListChanged += OnListChanged;
     }
 
 
@@ -122,5 +123,10 @@ public class TextLogControl : MonoBehaviour
     private void OnItemSelected(UIButton button)
     {
         //this currently does nothing
+    }
+
+    private void OnListChanged(LogItemGroup itemGroup)
+    {
+        SaveToFile();
     }
 }
