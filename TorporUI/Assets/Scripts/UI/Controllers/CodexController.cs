@@ -48,6 +48,8 @@ public class CodexController : MonoBehaviour
 
     private void GetAllEntries()
     {   
+        //Gets all the individual entries from the localized files
+        //Idealy we should be caching all the localized files into a seperate object, but this is what we'll do for now
         var languagePrefix = settings.language.ToString();
         List<TextAsset> entryAssets = Resources.LoadAll("Data/Localization/" + languagePrefix + "/Entries", typeof(TextAsset)).Cast<TextAsset>().ToList();
         foreach(var entry in entryAssets)

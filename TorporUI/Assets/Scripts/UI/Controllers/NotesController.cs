@@ -33,7 +33,7 @@ public class NotesController : MonoBehaviour
     public void Enable()
     {
         MainPanel.SetActive(true);
-        actButtons.SelectButton("act_1");
+        actButtons.SelectButton("act_1");       //hack to get it to not go straight for the act_1.json file, alternative would be to hide the user input till act selected
     }
 
     public void Disable()
@@ -42,7 +42,7 @@ public class NotesController : MonoBehaviour
     }
 
 
-    private void CreateButtons(ActButtonStruct buttonStruct)    //create all the buttons for the act selection
+    private void CreateButtons(ActButtonStruct buttonStruct)    //create all the buttons for the act selection. Very clumsy, properly implemented would tie into the gmae logic.
     {
         UIButton newButton = buttonFactory.GetNewInstance(actBar, buttonStruct.act_1, "act_1", "Prefabs/UI/SelectorButton");
         actButtons.Add(newButton);  
@@ -67,7 +67,10 @@ public class NotesController : MonoBehaviour
 
     private void inputText(UIButton button)
     {
-        logControl.LogText(inputField.text);
-        inputField.text = "";
+        if(inputField.text != "")
+        {
+            logControl.LogText(inputField.text);
+            inputField.text = "";
+        }
     }
 }

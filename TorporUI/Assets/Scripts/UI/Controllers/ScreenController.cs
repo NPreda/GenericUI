@@ -13,6 +13,7 @@ public class ScreenController : MonoBehaviour
 
     public void Start()
     {
+        //ideally the settings would be extensive, in this implementation it only selects a variable for the localization path
         settings = Registry.Instance.settings;
         buttonGroup.OnButtonPressed += ButtonSelected;
 
@@ -20,13 +21,14 @@ public class ScreenController : MonoBehaviour
         TextAsset localizationJson = Resources.Load<TextAsset>("Data/Localization/" + languagePrefix + "/UI/topbar");
         TopButtonStruct buttonStruct = JsonUtility.FromJson<TopButtonStruct>(localizationJson.text);
 
-        //create the buttons
+        //create the buttons for the top section
         UIButton newButton = buttonFactory.GetNewInstance(topBar, buttonStruct.codex, "codex", "Prefabs/UI/SelectorButton");
         buttonGroup.Add(newButton);
 
         newButton = buttonFactory.GetNewInstance(topBar, buttonStruct.notes, "notes", "Prefabs/UI/SelectorButton");
         buttonGroup.Add(newButton);
 
+        //hack to go straight to the codex screen
         buttonGroup.SelectButton("codex");       
     }
 
