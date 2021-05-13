@@ -14,9 +14,9 @@ public class UIButton : CustomUI
     //----------------------------------------------------------------------
     #region Properties
 
-    [SerializeField] private TMP_Text content;
+    [SerializeField] public TMP_Text content;
     private Image background;
-    private IMouseInput mInput;
+    protected IMouseInput mInput;
     public event Action<UIButton> OnLeftClickEvent;        //event sent when an item is left-clicked
 
     public string id = "";  //used to as a localization independent identifier
@@ -42,14 +42,14 @@ public class UIButton : CustomUI
     public void Populate(string objectName)
     {
         this.gameObject.name = objectName;
-        this.content.text = objectName;
+        this.content.text = objectName.ToUpper();
     }
 
     public void Populate(string objectName, string id)
     {
         this.gameObject.name = id;
         this.id = id;
-        this.content.text = objectName;
+        this.content.text = objectName.ToUpper();
     }
 
     protected override void OnSkinUI ()
@@ -77,18 +77,18 @@ public class UIButton : CustomUI
         } 
     }
 
-    void OnClick(PointerEventData eventData)
+    public virtual void OnClick(PointerEventData eventData)
     {
         OnLeftClickEvent(this);
     }
 
-    public void Select(){
+    public virtual void Select(){
         mInput.setActive(false);
         _isSelected = true;
         _isDirty = true;
     }
 
-    public void Deselect(){
+    public virtual void Deselect(){
         mInput.setActive(true);
         _isSelected = false;
         _isDirty = true;

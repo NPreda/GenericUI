@@ -11,25 +11,25 @@ public class TextLogControl : MonoBehaviour
     [SerializeField]
     private GameObject textTemplate;
 
-    private List<LogEntry> logItems;
+    private LogItemGroup logItems = new LogItemGroup();
     private string actName;
 
     private bool _isModified = false;
 
-    void Start()
+    public void Start()
     {
-        logItems = new List<LogEntry>();
+        logItems.OnButtonPressed += OnItemSelected;
     }
 
 
     public void LogText(string newEntry)
     {
         //we delete older items after 10 entries as a temporary measure
-        if (logItems.Count == 10) 
+        if (logItems.buttons.Count == 10) 
         {
-            LogEntry tempItem = logItems[0];
+            LogEntry tempItem = (LogEntry) logItems.buttons[0];
             Destroy(tempItem.gameObject);
-            logItems.Remove(tempItem);
+            logItems.buttons.Remove(tempItem);
         }
 
         CreateEntry(newEntry);
@@ -39,6 +39,10 @@ public class TextLogControl : MonoBehaviour
 
     public void SetAct(string newAct)
     {
+        //save previous notes
+        SaveToFile();
+
+        //move to new act notes
         actName = newAct;
         Populate();
     }
@@ -47,19 +51,11 @@ public class TextLogControl : MonoBehaviour
     {
         if(actName == "") throw new Exception("No act specified for the player log to update from");
 
-        //delete existing logs
-        for(int i = logItems.Count -1; i >= 0; i--)
-        {
-            Destroy(logItems[i].gameObject);
-            logItems.RemoveAt(i);
-        }
-        
-        //this will create the appropriate file and folder system if it doesn't exist
-        string dataFilePath= Application.persistentDataPath + "/";
-        Directory.CreateDirectory(dataFilePath + "TorporUI");
-        var a = File.Create(dataFilePath + "TorporUI/" + actName +".json");
-        a.Close();
+        ClearNotes();    
+        ValidateFile();
+
         //now let's read everything
+        string dataFilePath= Application.persistentDataPath + "/";
         string notesJson = File.ReadAllText(dataFilePath + "TorporUI/" + actName +".json");
 
         StringListStruct stringStruct = JsonUtility.FromJson<StringListStruct>(notesJson);
@@ -72,36 +68,59 @@ public class TextLogControl : MonoBehaviour
         }
     }
 
-    private void SaveToFile()
-    {
-        StringListStruct allEntries = new StringListStruct();
-        foreach(var entry in logItems)
-        {
-            allEntries.strings.Add(entry.entryText.text);
-        }
-
-        string jsonObject = JsonUtility.ToJson(allEntries);
-        
-        //this will create the appropriate file and folder system if it doesn't exist
-        string dataFilePath= Application.persistentDataPath + "/";
-        Directory.CreateDirectory(dataFilePath + "TorporUI");
-        Debug.Log(dataFilePath + "TorporUI/" + actName +".json");
-        //now let's write down everything
-        File.WriteAllText(dataFilePath + "TorporUI/" + actName +".json", jsonObject);
-    }   
-
     private void CreateEntry(string newEntry)
     {
         GameObject newText = Instantiate(textTemplate, this.gameObject.transform) as GameObject;
         LogEntry logEntryScript = newText.GetComponent<LogEntry>();
-        logEntryScript.entryText.text = newEntry;
+        logEntryScript.content.text = newEntry;
         logItems.Add(logEntryScript);
     }
+
+    private void SaveToFile()
+    {
+        StringListStruct allEntries = new StringListStruct();
+        foreach(var entry in logItems.buttons)
+        {
+            allEntries.strings.Add(entry.content.text);
+        }
+
+        string jsonObject = JsonUtility.ToJson(allEntries);
+        
+        ValidateFile();
+        //now let's write down everything
+        string dataFilePath= Application.persistentDataPath + "/";
+        File.WriteAllText(dataFilePath + "TorporUI/" + actName +".json", jsonObject);
+
+        _isModified = false;
+    }   
 
     public void Update()
     {
         if(!_isModified) return;
         SaveToFile();
 
+    }
+
+    private void ClearNotes()
+    {
+        //delete existing notes
+        logItems.ClearButtons();
+    }
+
+    private void ValidateFile()
+    {
+       //this will create the appropriate file and folder system if it doesn't exist
+        string dataFilePath= Application.persistentDataPath + "/";
+        Directory.CreateDirectory(dataFilePath + "TorporUI");
+        if (!System.IO.File.Exists(dataFilePath + "TorporUI/" + actName +".json"))
+        {
+            var a = File.Create(dataFilePath + "TorporUI/" + actName +".json");
+            a.Close();
+        }
+    }
+
+    private void OnItemSelected(UIButton button)
+    {
+        //this currently does nothing
     }
 }

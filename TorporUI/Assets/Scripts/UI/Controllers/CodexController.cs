@@ -1,13 +1,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using System;
+using TMPro;
 
 public class CodexController : MonoBehaviour
 {
+    [SerializeField] GameObject MainPanel;
     [SerializeField] GameObject categoryPanel;
     [SerializeField] GameObject subCategoryPanel;
     [SerializeField] GameObject entryLeafPanel;
     [SerializeField] EntryDisplay entryDisplay;
+    [SerializeField] TMP_Text header;
 
     private SettingsDB settings;
 
@@ -30,6 +34,16 @@ public class CodexController : MonoBehaviour
 
         GetAllEntries();
         SpawnCategories();
+    }
+
+    public void Enable()
+    {
+        MainPanel.SetActive(true);
+    }
+
+    public void Disable()
+    {
+        MainPanel.SetActive(false);
     }
 
     private void GetAllEntries()
@@ -88,6 +102,9 @@ public class CodexController : MonoBehaviour
         subCategoryButtons.ClearButtons();
         entryButtons.ClearButtons();
         entryDisplay.Clear();   
+
+        //change header
+        header.text = buttonScript.id.ToUpper();
 
         //repopulate the space
         SpawnSubCategories(buttonScript.gameObject.name);

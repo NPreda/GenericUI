@@ -23,6 +23,7 @@ public class UIRoundButton : UIButton
     public void Populate(string objectName, Sprite activeIcon, Sprite unactiveIcon)
     {
         this.gameObject.name = objectName;
+        this.id = objectName;
         this.activeIcon = activeIcon;
         this.unactiveIcon = unactiveIcon;
         this._isDirty = true;

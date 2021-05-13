@@ -4,8 +4,8 @@ using System;
 public class ScreenController : MonoBehaviour
 {
     [SerializeField]private GameObject topBar;
-    [SerializeField]private GameObject codexPanel;
-    [SerializeField]private GameObject notesPanel;
+    [SerializeField]private CodexController codexController;
+    [SerializeField]private NotesController notesController;
 
     private UIButtonGroup buttonGroup = new UIButtonGroup();
     private ButtonFactory buttonFactory = new ButtonFactory();
@@ -25,7 +25,9 @@ public class ScreenController : MonoBehaviour
         buttonGroup.Add(newButton);
 
         newButton = buttonFactory.GetNewInstance(topBar, buttonStruct.notes, "notes", "Prefabs/UI/SelectorButton");
-        buttonGroup.Add(newButton);       
+        buttonGroup.Add(newButton);
+
+        buttonGroup.SelectButton("codex");       
     }
 
 
@@ -33,11 +35,11 @@ public class ScreenController : MonoBehaviour
     {
         if (button.id == "codex")
         {
-            codexPanel.SetActive(true);
-            notesPanel.gameObject.SetActive(false);
+            codexController.Enable();
+            notesController.Disable();
         }else if(button.id == "notes"){
-            notesPanel.gameObject.SetActive(true);
-            codexPanel.gameObject.SetActive(false);
+            notesController.Enable();
+            codexController.Disable();
         }else{
             throw new Exception("One of the top bar buttons has a malformed 'id' field");
         }

@@ -39,6 +39,7 @@
      <Compile Include="Assets\Scripts\Factories\ButtonFactory.cs" />
      <Compile Include="Assets\Scripts\Factories\RoundButtonFactory.cs" />
      <Compile Include="Assets\Scripts\TextLogging\LogEntry.cs" />
+     <Compile Include="Assets\Scripts\TextLogging\LogItemGroup.cs" />
      <Compile Include="Assets\Scripts\TextLogging\TextLogControl.cs" />
      <Compile Include="Assets\Scripts\Tools\Factory.cs" />
      <Compile Include="Assets\Scripts\Tools\UiMouseInputProvider.cs" />

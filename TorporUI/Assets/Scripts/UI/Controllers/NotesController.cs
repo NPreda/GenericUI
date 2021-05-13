@@ -1,8 +1,12 @@
 using UnityEngine;
 using TMPro;
+using System;
+
+
 
 public class NotesController : MonoBehaviour
 {
+    [SerializeField] GameObject MainPanel;
     [SerializeField]private GameObject actBar;
     [SerializeField]private GameObject fieldPanel;
     [SerializeField]private TMP_InputField inputField;
@@ -25,6 +29,18 @@ public class NotesController : MonoBehaviour
         //create the buttons
         CreateButtons(buttonStruct);
     }
+
+    public void Enable()
+    {
+        MainPanel.SetActive(true);
+        actButtons.SelectButton("act_1");
+    }
+
+    public void Disable()
+    {
+        MainPanel.SetActive(false);
+    }
+
 
     private void CreateButtons(ActButtonStruct buttonStruct)    //create all the buttons for the act selection
     {
